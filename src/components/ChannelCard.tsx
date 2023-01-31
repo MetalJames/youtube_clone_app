@@ -6,6 +6,9 @@ import { demoProfilePicture } from '../utils/constants';
 
 type ChannelCardProps = {
     channelDetail?: {
+        statistics?: {
+            subscriberCount?: string,
+        },
         id: {
             channelId?: string,
         },
@@ -22,9 +25,10 @@ type ChannelCardProps = {
 }
 
 const ChannelCard = (props: ChannelCardProps) => {
+    // console.log(props.channelDetail)
     return (
     <Box sx={{ boxShadow: 'none', borderRadius: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center', 
-                width: { xs: '356px', md: '320px' }, height: '326px', margin: 'auto'}}
+        width: { xs: '356px', md: '320px' }, height: '326px', margin: 'auto'}}
     >
         <Link to={`/channel/${props.channelDetail?.id?.channelId}`}>
             <CardContent sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'center', color: '#fff' }}>
@@ -37,6 +41,11 @@ const ChannelCard = (props: ChannelCardProps) => {
                     {props.channelDetail?.snippet?.title}
                     <CheckCircle sx={{ fontSize: '14px', color: 'gray', ml: '5px' }} />
                 </Typography>
+                    {props.channelDetail?.statistics?.subscriberCount && (
+                        <Typography sx={{ fontSize: '15px', fontWeight: 500, color: 'gray' }}>
+                            {parseInt(props.channelDetail?.statistics?.subscriberCount).toLocaleString('en-US')} Subscribers
+                        </Typography>
+                    )}
             </CardContent>
         </Link>
     </Box>
