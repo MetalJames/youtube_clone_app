@@ -8,13 +8,12 @@ type VideosProps = {
 };
 
 const Videos = (props: VideosProps) => {
-    if (!props.videos?.length) return <Loader />;
-
+    // if (!props.videos?.length) return <Loader />;
     return (
         <Stack direction='row' flexWrap='wrap' justifyContent='start' alignItems='start' gap={2}>
-            {props.videos.map((item: any, idx: React.Key | null | undefined) => (
+            {props.videos.map((video: any, idx: React.Key | null | undefined) => (
                 <Box key={idx}>
-                    {item.id.videoId && <VideoCard video={item} /> }
+                    {video.id.videoId && <VideoCard video={video} /> }
                     {/* {item.id.channelId && <ChannelCard channelDetail={item} />} */}
                 </Box>
             ))}
