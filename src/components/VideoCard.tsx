@@ -19,8 +19,6 @@ type VideoCardProps = {
             channelId?: string,
             channelTitle?: string,
             title?: string,
-            high?: string,
-            url?: string,
             image?: string,
         } ,
     }
