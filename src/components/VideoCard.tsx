@@ -16,6 +16,8 @@ type VideoCardProps = {
                     url: string
                 }
             },
+            channelId?: string,
+            channelTitle?: string,
             title?: string,
             high?: string,
             url?: string,
@@ -26,7 +28,7 @@ type VideoCardProps = {
 
 const VideoCard = (props: VideoCardProps) => {
     return (
-        <Card sx={{ width: { xs: '100%', sm: '358px', md: '320px', }, boxShadow: 'none', borderRadius: 0 }}>
+        <Card sx={{ width: { md: '320px', xs: '100%', sm: '358px', }, boxShadow: 'none', borderRadius: 0 }}>
             <Link to={props.video?.id?.videoId ? `/video/${props.video.id.videoId}` : demoVideoUrl }>
                 <CardMedia image={props.video?.snippet?.thumbnails?.high?.url || demoThumbnailUrl} 
                             sx={{ width: { xs: '100%', sm: '358px'}, height: 180 }} 
@@ -36,6 +38,19 @@ const VideoCard = (props: VideoCardProps) => {
                             alt={props.video?.snippet?.title} 
                 />
             </Link>
+            <CardContent sx={{ backgroundColor: '#1E1E1E', height: '106px' }}>
+                <Link to={props.video?.id?.videoId ? `/video/${props.video?.id?.videoId}` : demoVideoUrl } >
+                    <Typography variant='subtitle1' fontWeight='bold' color='#FFF'>
+                        {props.video?.snippet?.title?.slice(0, 60) || demoVideoTitle.slice(0, 60)}
+                    </Typography>
+                </Link>
+                <Link to={props.video?.snippet?.channelId ? `/channel/${props.video?.snippet?.channelId}` : demoChannelUrl} >
+                    <Typography variant='subtitle2' color='gray'>
+                        {props.video?.snippet?.channelTitle || demoChannelTitle}
+                        <CheckCircle sx={{ fontSize: '12px', color: 'gray', ml: '5px' }} />
+                    </Typography>
+                </Link>
+            </CardContent>
         </Card>
     )
 }

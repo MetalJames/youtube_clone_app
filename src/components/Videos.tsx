@@ -9,6 +9,7 @@ type VideosProps = {
 
 const Videos = (props: VideosProps) => {
     // if (!props.videos?.length) return <Loader />;
+    // console.log(props.videos)
     return (
         <Stack direction='row' flexWrap='wrap' justifyContent='start' alignItems='start' gap={2}>
             {props.videos.map((video: any, idx: React.Key | null | undefined) => (
