@@ -5,17 +5,25 @@ import { ChannelCard, Loader, VideoCard } from './';
 
 type VideosProps = {
     videos?: any;
+    direction: string
 };
 
 const Videos = (props: VideosProps) => {
-    // if (!props.videos?.length) return <Loader />;
-    // console.log(props.videos)
+    if (!props.videos?.length) return <Loader />;
     return (
-        <Stack direction='row' flexWrap='wrap' justifyContent='center' alignItems='center' alignContent='space-evenly' gap={3}>
-            {props.videos.map((video: any, idx: React.Key | null | undefined) => (
+        //have to modify stack.d.ts line 19-20 to get read of error(typescript tricky)
+
+
+
+        //finished 2:14
+
+
+
+        <Stack direction={props.direction || 'row' } flexWrap='wrap' justifyContent='center' alignItems='center' alignContent='space-evenly' gap={3}>
+            {props.videos.map((item: any, idx: React.Key | null | undefined) => (
                 <Box key={idx}>
-                    {video.id.videoId && <VideoCard video={video} /> }
-                    {video.id.channelId && <ChannelCard channelDetail={video} />}
+                    {item.id.videoId && <VideoCard video={item} /> }
+                    {item.id.channelId && <ChannelCard channelDetail={item} />}
                 </Box>
             ))}
         </Stack>
