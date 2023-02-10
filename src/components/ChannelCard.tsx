@@ -26,12 +26,11 @@ type ChannelCardProps = {
 }
 
 const ChannelCard = (props: ChannelCardProps) => {
-    // console.log(props.channelDetail)
     return (
     <Box sx={{ boxShadow: 'none', borderRadius: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center', 
         width: { xs: '356px', md: '320px' }, height: '326px', margin: 'auto', marginTop: props.marginTop }}
     >
-        <Link to={`/channel/${props.channelDetail?.id?.channelId || props.channelDetail?.id}}`}>
+        <Link to={`/channel/${props.channelDetail?.id?.channelId || props.channelDetail?.id}`}>
             <CardContent sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'center', color: '#fff' }}>
                 <CardMedia
                     image={props.channelDetail?.snippet?.thumbnails?.high?.url || demoProfilePicture}

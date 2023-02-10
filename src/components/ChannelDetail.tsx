@@ -7,38 +7,17 @@ import { fetchFromAPI } from '../utils/fetchFromAPI';
 
 const ChannelDetail = () => {
 
-    const [channelDetail, setChannelDetail] = useState();
+    const [channelDetail, setChannelDetail] = useState<any | null>(null);
     const [videos, setVideos] = useState([]);
-
     const { id } = useParams();
 
     console.log(id)
+    console.log(channelDetail);
 
     useEffect(() => {
         fetchFromAPI(`channels?part=snippet&id=${id}`).then((data) => setChannelDetail(data?.items[0]));
         fetchFromAPI(`search?channelId=${id}&part=snippet&order=date`).then((data) => setVideos(data?.items));
     }, [id]);
-
-    // console.log(channelDetail);
-    // console.log(videos);
-
-
-    // useEffect(() => {
-    //     const fetchResults = async () => {
-    //         const data = await fetchFromAPI(`channels?part=snippet&id=${id}`);
-
-    //         console.log(data)
-    //         setChannelDetail(data?.items[0]);
-
-    //         const videosData = await fetchFromAPI(
-    //             `search?channelId=${id}&part=snippet%2Cid&order=date`
-    //         );
-
-    //         setVideos(videosData?.items);
-    //     };
-
-    //     fetchResults();
-    // }, [id]);
 
     return (
         <Box minHeight='95vh'>
@@ -51,8 +30,8 @@ const ChannelDetail = () => {
                 <ChannelCard channelDetail={channelDetail} marginTop='-110px'/>
             </Box>
             <Box display='flex' p={2}>
-            {/* <Box sx={{ mr: { sm: '100px' } }}/> */}
-                {/* <Videos videos={videos} /> */}
+            <Box sx={{ mr: { sm: '100px' } }}/>
+                <Videos videos={videos} />
             </Box>
         </Box>
     )
