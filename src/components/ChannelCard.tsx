@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import { demoProfilePicture } from '../utils/constants';
 
 type ChannelCardProps = {
-    marginTop?: string,
+    marginTop?: string | {},
+    sx?: {},
     channelDetail?: {
         statistics?: {
             subscriberCount?: string,
